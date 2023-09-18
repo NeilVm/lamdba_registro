@@ -1,0 +1,19 @@
+{
+  "profiles": {
+    "registro": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:54375;http://localhost:54376",
+      "hotReloadEnabled": true
+    },
+    "Mock Lambda Test Tool": {
+      "commandName": "Executable",
+      "executablePath": "%USERPROFILE%\\.dotnet\\tools\\dotnet-lambda-test-tool-6.0.exe",
+      "commandLineArgs": "--port 5050",
+      "workingDirectory": ".\\bin\\$(Configuration)\\net6.0"
+    }
+  }
+}
