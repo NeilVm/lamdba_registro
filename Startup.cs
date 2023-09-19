@@ -3,12 +3,16 @@ using registro.Data;
 using MySql.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using registro.Services;
+
 
 namespace registro;
 
 public class Startup
 {
-    public Startup(IConfiguration configuration)
+    public Startup(IConfiguration configuration) 
     {
         Configuration = configuration;
     }
@@ -20,9 +24,10 @@ public class Startup
     {
         services.AddControllers();
         services.AddSwaggerGen();
+        services.AddScoped<AuthService>();
         services.AddDbContext<ApplicationDbContext>(options =>
         options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
-
+        services.AddSingleton<BCrypt.Net.BCrypt>();
 
     }
 

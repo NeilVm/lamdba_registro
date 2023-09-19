@@ -1,6 +1,6 @@
-﻿using Org.BouncyCastle.Asn1.Mozilla;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BCrypt.Net;
 
 namespace registro.Models
 {
@@ -32,7 +32,7 @@ namespace registro.Models
 
         [Required]
         [Column("contrasena")]
-        public string Contrasena { get; set; }
+        public string ContrasenaHash { get; set; }
 
         [NotMapped] // No se mapea a la base de datos
         public string ConfirmarContrasena { get; set; }
@@ -53,9 +53,15 @@ namespace registro.Models
         public string Sexo { get; set; }
 
         [Column("peso")]
-        public string Peso { get; set; }
+        public decimal? Peso { get; set; }
 
         [Column("alt")]
-        public string Altura { get; set; }
+        public decimal? Altura { get; set; }
+
+        // Método para verificar la contraseña utilizando BCrypt
+        public bool VerificarContrasena(string contrasena)
+        {
+            return BCrypt.Net.BCrypt.Verify(contrasena, ContrasenaHash);
+        }
     }
 }

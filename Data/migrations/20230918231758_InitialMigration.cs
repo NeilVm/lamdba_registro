@@ -30,8 +30,8 @@ namespace registro.Data.migrations
                     documento = table.Column<string>(type: "longtext", nullable: false),
                     fecnac = table.Column<string>(type: "longtext", nullable: false),
                     sexo = table.Column<string>(type: "longtext", nullable: false),
-                    peso = table.Column<string>(type: "longtext", nullable: false),
-                    alt = table.Column<string>(type: "longtext", nullable: false)
+                    peso = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    alt = table.Column<decimal>(type: "decimal(18,2)", nullable: true)
                 },
                 constraints: table =>
                 {
