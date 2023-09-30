@@ -34,7 +34,7 @@ namespace registro.Models
         [Column("contrasena")]
         public string ContrasenaHash { get; set; }
 
-        [NotMapped] // No se mapea a la base de datos
+        [NotMapped] 
         public string ConfirmarContrasena { get; set; }
 
         [Required]
@@ -58,7 +58,7 @@ namespace registro.Models
         [Column("alt")]
         public decimal? Altura { get; set; }
 
-        // Método para verificar la contraseña utilizando BCrypt
+       
         public bool VerificarContrasena(string contrasena)
         {
             return BCrypt.Net.BCrypt.Verify(contrasena, ContrasenaHash);

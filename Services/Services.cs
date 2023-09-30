@@ -18,16 +18,16 @@ namespace registro.Services
 
         public async Task<bool> AuthenticateAsync(string correo, string contrasena)
         {
-            // Busca un registro con el correo proporcionado en la base de datos
+            
             var user = await _dbContext.Registros.FirstOrDefaultAsync(r => r.Correo == correo);
 
-            // Si el usuario no existe, la autenticación falla
+          
             if (user == null)
             {
                 return false;
             }
 
-            // Verifica la contraseña proporcionada con el hash almacenado en ContrasenaHash
+            
             bool isPasswordValid = BCrypt.Net.BCrypt.Verify(contrasena, user.ContrasenaHash);
 
             return isPasswordValid;
