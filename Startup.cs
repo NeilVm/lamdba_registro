@@ -29,6 +29,17 @@ public class Startup
         options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
         services.AddSingleton<BCrypt.Net.BCrypt>();
 
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowSpecificOrigin",
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:8100") // Reemplaza con la URL de tu aplicación
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+        });
+
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
