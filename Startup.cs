@@ -62,6 +62,11 @@ public class Startup
 
         app.UseSwaggerUI();
 
+        app.UseCors("AllowSpecificOrigin");
+
+        app.UseAuthorization();
+
+
         IApplicationBuilder applicationBuilder = app.UseAuthorization();
 
         app.UseEndpoints(endpoints =>
