@@ -31,14 +31,15 @@ public class Startup
 
         services.AddCors(options =>
         {
-            options.AddPolicy("AllowSpecificOrigin",
+            options.AddPolicy("AllowAllOrigins",
                 builder =>
                 {
-                    builder.WithOrigins("http://localhost:8100") // Reemplaza con la URL de tu aplicación
+                    builder.AllowAnyOrigin()
                            .AllowAnyMethod()
                            .AllowAnyHeader();
                 });
         });
+
 
     }
 
@@ -62,7 +63,7 @@ public class Startup
 
         app.UseSwaggerUI();
 
-        app.UseCors("AllowSpecificOrigin");
+        app.UseCors("AllowAllOrigins");
 
         app.UseAuthorization();
 
